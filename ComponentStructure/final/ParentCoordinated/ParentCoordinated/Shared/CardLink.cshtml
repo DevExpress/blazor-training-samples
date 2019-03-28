@@ -1,0 +1,24 @@
+﻿@inherits ChildElement<ICardBody>
+@using Microsoft.AspNetCore.Components.RenderTree;
+
+@functions {
+    protected override void Register(ICardBody parent)
+    {
+        parent.AddLink(this);
+    }
+
+    [Parameter]
+    RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    string Target { get; set; }
+
+    public override RenderFragment RenderContent => (builder =>
+    {
+        builder.OpenElement(0, "a");
+        builder.AddAttribute(1, "class", "card-link");
+        builder.AddAttribute(2, "href", Target);
+        builder.AddContent(3, ChildContent);
+        builder.CloseElement();
+    });
+}

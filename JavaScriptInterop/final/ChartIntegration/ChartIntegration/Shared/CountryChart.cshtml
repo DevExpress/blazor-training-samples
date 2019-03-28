@@ -1,0 +1,24 @@
+﻿@inject IJSRuntime Js
+
+<div ref="chart" />
+
+@functions {
+    [Parameter]
+    IList<Country> Data { get; set; }
+
+    ElementRef chart;
+
+    protected override async Task OnAfterRenderAsync()
+    {
+        await Js.InvokeAsync<bool>("initCountryChart", chart, Data, new DotNetObjectRef(this));
+    }
+
+    [Parameter]
+    Action<string> OnChartPointClicked { get; set; }
+
+    [JSInvokable]
+    public void ChartPointClicked(string id)
+    {
+        OnChartPointClicked?.Invoke(id);
+    }
+}

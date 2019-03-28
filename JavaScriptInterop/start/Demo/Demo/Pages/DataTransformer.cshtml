@@ -1,0 +1,51 @@
+﻿@page "/dataTransformer"
+
+<div class="card my-3">
+    <h5 class="card-header">Data Transformer</h5>
+    <div class="card-body">
+        <pre>
+new List<Country> {
+  new Country {
+    CountryName = "UK",
+    Cities = new City[] {
+        new City { CityName="London", Population=7556900 },
+        new City { CityName="Edinburgh", Population=464990 }
+    }
+  },
+  new Country {
+    CountryName = "USA",
+    Cities = new City[] {
+        new City { CityName="New York", Population=8601186 }
+    }
+  }
+}
+            </pre>
+        <button onclick=@TransformData>Transform data</button>
+    </div>
+    @if (TransformResult != null)
+    {
+        <div class="card-body">
+            <table class="table">
+                <thead><tr><th>Country</th><th>City</th><th>Population</th></thead>
+                <tbody>
+                    @foreach (var row in TransformResult)
+                    {
+                        <tr>
+                            <td>@row.CountryName</td>
+                            <td>@row.CityName</td>
+                            <td>@row.Population</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@functions {
+    List<TransformResult> TransformResult { get; set; }
+
+    void TransformData()
+    {
+    }
+}

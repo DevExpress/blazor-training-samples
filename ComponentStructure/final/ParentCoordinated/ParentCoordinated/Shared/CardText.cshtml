@@ -1,0 +1,11 @@
+﻿@inherits ContainerChildElement<ICardBody>
+
+@functions {
+    protected override void Register(ICardBody parent)
+    {
+        parent.AddText(this);
+    }
+
+    protected override string ContainerCssClass => "card-text";
+    protected override ElementType ContainerElementType => ElementType.P;
+}

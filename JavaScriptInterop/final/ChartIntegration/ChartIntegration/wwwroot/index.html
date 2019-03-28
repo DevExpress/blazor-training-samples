@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ChartIntegration</title>
+    <base href="/" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/18.2.7/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/18.2.7/css/dx.light.css" />
+
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/18.2.7/js/dx.viz.js"></script>
+
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app>Loading...</app>
+
+    <script src="_framework/components.webassembly.js"></script>
+
+    <script>
+        window.initCountryChart = (chartElement, data, blazorComponent) => {
+            $(chartElement).dxChart({
+                dataSource: data,
+                commonSeriesSettings: {
+                    argumentField: 'name',
+                    type: 'bar'
+                },
+                argumentAxis: {
+                    label: {
+                        displayMode: 'rotate',
+                        rotationAngle: 270
+                    }
+                },
+                valueAxis: [
+                    { name: 'areaAxis', title: 'Area' },
+                    { name: 'populationAxis', title: 'Population', position: 'right' }
+                ],
+                series: [
+                    {
+                        valueField: 'areaKM2',
+                        axis: 'areaAxis',
+                        name: 'Area in KM^2'
+                    },
+                    {
+                        valueField: 'population',
+                        axis: 'populationAxis',
+                        name: 'Population'
+                    }
+                ],
+                onPointClick: ({ target }) => { 
+                    blazorComponent.invokeMethod('ChartPointClicked', target.data._id);
+                }
+            });
+        };
+    </script>
+</body>
+</html>

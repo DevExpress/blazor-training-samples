@@ -1,0 +1,62 @@
+﻿@page "/callingJsBasics"
+
+@inject IJSRuntime Js
+
+<div class="card my-3">
+    <h5 class="card-header">Debug Output</h5>
+    <div class="card-body">
+        <button onclick=@DebugOutString>Output debug string</button>
+        <button onclick=@DebugOutObject>Output debug object</button>
+    </div>
+</div>
+
+<div class="card my-3">
+    <h5 class="card-header">Don't Panic</h5>
+    <div class="card-body">
+        <button onclick=@GetTheAnswer>Get the answer to life, the universe and everything</button>
+        <button onclick=@ClearTheAnswer>Clear</button>
+    </div>
+    @if (TheAnswer != null)
+    {
+        <div class="card-body">
+            <p class="card-text">Description: @TheAnswer.Description</p>
+            <p class="card-text">Value: @TheAnswer.Value</p>
+        </div>
+    }
+</div>
+
+@functions {
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
+
+    public class Answer
+    {
+        public string Description { get; set; }
+        public string Value { get; set; }
+    }
+
+    async void DebugOutString()
+    {
+        await Js.InvokeAsync<bool>("debugOut", "Test String", false, "Here's a string");
+    }
+
+    async void DebugOutObject()
+    {
+        await Js.InvokeAsync<bool>("debugOut", new Person { Name = "Anna", Age = 38 }, true, "Check out this person");
+    }
+
+    Answer TheAnswer { get; set; }
+
+    async Task GetTheAnswer()
+    {
+        TheAnswer = await Js.InvokeAsync<Answer>("getTheAnswer");
+    }
+
+    void ClearTheAnswer()
+    {
+        TheAnswer = null;
+    }
+}
