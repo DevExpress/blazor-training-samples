@@ -7,4 +7,4 @@ This repository contains the source code of all samples shown in the video cours
 - Visual Studio 2019 `16.0.0 RC.1 SVC1` (as shown in the About dialog)
 - Microsoft .NET Core SDK 3.0.100 - preview3 (x64) `3.0.100.10431` (as shown in the Windows _Apps & features_ list)
   - Blazor assemblies show version `0.9.0-preview3-19154-02`
-- [Visual Studio Blazor Extension](https://marketplace.visualstudio.com/items?itemName=aspnet.blazor) version 16.0.19154.2
+- [Visual Studio Blazor Extension](https://marketplace.visualstudio.com/items?itemName=aspnet.blazor) version `16.0.19154.2`
