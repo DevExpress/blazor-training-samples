@@ -1,0 +1,31 @@
+﻿@typeparam T
+
+@{
+    var messages = GetValidationMessages();
+    if (messages.Count() > 0)
+    {
+        <div class="invalid-feedback" style="display: block;">
+            @foreach (var m in messages)
+            {
+                <p>@m</p>
+            }
+        </div>
+    }
+}
+
+@functions {
+    [CascadingParameter]
+    EditContext EditContext { get; set; }
+
+    [Parameter]
+    System.Linq.Expressions.Expression<Func<T>> For { get; set; }
+
+    FieldIdentifier fieldIdentifier;
+    protected override void OnParametersSet()
+    {
+        fieldIdentifier = FieldIdentifier.Create(For);
+    }
+
+    IEnumerable<string> GetValidationMessages() =>
+      EditContext.GetValidationMessages(fieldIdentifier);
+}
