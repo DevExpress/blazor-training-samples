@@ -17,7 +17,6 @@ namespace Demo.Shared
   public class Trophy
   {
     public int Id { get; set; }
-    [Required(AllowEmptyStrings=false, ErrorMessage="Please enter a name")]
     public string Name { get; set; }
     public string Source { get; set; }
     public CoolFactor CoolFactor { get; set; } = CoolFactor.Mediocre;
