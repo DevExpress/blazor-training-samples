@@ -1,15 +1,13 @@
 ﻿<div class="alert @AlertClass" role="alert">
-    <div class="alert @AlertClass" role="alert">
-        @if (!string.IsNullOrEmpty(Title))
-        {
-            <h4 class="alert-heading">@Title</h4>
-            <div>@ChildContent</div>
-        }
-        else
-        {
-            @ChildContent
-        }
-    </div>
+    @if (!string.IsNullOrEmpty(Title))
+    {
+        <h4 class="alert-heading">@Title</h4>
+        <div>@ChildContent</div>
+    }
+    else
+    {
+        @ChildContent
+    }
 </div>
 
 @functions {
@@ -31,8 +29,8 @@
     [Parameter]
     RenderFragment ChildContent { get; set; }
 
-    string AlertClass => $"alert-{Type.ToString().ToLower()}";
-
     [Parameter]
     string Title { get; set; }
+
+    string AlertClass => $"alert-{Type.ToString().ToLower()}";
 }
