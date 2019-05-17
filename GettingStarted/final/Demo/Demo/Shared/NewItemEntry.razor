@@ -11,12 +11,12 @@
 </div>
 
 @functions {
-    [Parameter]
-    private Action<string> OnNewItem { get; set; }
-
     string Text { get; set; }
 
     string buttonDisabled => Text != null && Text.Length > 0 ? null : "disabled";
+
+    [Parameter]
+    private Action<string> OnNewItem { get; set; }
 
     void NewItem()
     {
