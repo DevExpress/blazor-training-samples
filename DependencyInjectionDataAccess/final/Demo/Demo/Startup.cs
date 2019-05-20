@@ -1,8 +1,8 @@
+using Demo.Shared;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using HttpClientDemo.Shared;
 
-namespace HttpClientDemo
+namespace Demo
 {
   public class Startup
   {

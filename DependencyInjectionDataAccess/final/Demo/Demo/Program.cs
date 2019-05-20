@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Blazor.Hosting;
 
-namespace HttpClientDemo
+namespace Demo
 {
   public class Program
   {

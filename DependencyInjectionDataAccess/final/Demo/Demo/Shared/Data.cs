@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HttpClientDemo.Shared
+namespace Demo.Shared
 {
   public class Data
   {

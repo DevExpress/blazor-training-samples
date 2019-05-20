@@ -5,7 +5,7 @@
 @{
     RenderFragment ColumnHeader(string field, string caption) =>
     @<th onclick=@(async () => await HeaderClick(field))>
-        @((MarkupString) caption) <SortIndicator Field=@field SortField=@SortField Desc=@SortDesc />
+        @((MarkupString)caption) <SortIndicator Field=@field SortField=@SortField Desc=@SortDesc />
     </th>;
 }
 
@@ -19,7 +19,7 @@
                 <th>ID</th>
                 @ColumnHeader("name", "Country")
                 @ColumnHeader("areaKM2", "Area in KM<sup>2</sup>")
-                @ColumnHeader("population", "Country")
+                @ColumnHeader("population", "Population")
             </tr>
         </thead>
         <tbody>
