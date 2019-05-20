@@ -1,17 +1,17 @@
 ﻿@page "/trophies/{Id:int}"
 
 @inject IDataLayer DataLayer
-@inject Microsoft.AspNetCore.Components.Services.IUriHelper UriHelper
+@inject IUriHelper UriHelper
 
 <h1>Editing trophy "@Trophy.Name"</h1>
 
 <EditForm Model="@Trophy" OnValidSubmit="@ValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
-
     <div class="form-group">
         <label for="name">Name:</label>
         <InputText Class="form-control" id="name" bind-Value="@Trophy.Name" />
+        <ValidationMessage For="@(() => Trophy.Name)" />
         <BootstrapInvalidFeedback For="@(() => Trophy.Name)" />
     </div>
     <div class="form-group">
