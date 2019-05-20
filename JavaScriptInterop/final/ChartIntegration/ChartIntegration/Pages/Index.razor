@@ -39,6 +39,7 @@
 
                     </tbody>
                 </table>
+
             </div>
             <div class="col-5">
                 <CountryChart Data=@Countries OnChartPointClicked="@ChartPointClicked" />
@@ -64,7 +65,6 @@ else
     async Task LoadData()
     {
         Countries = await DataLayer.FetchCountries(SortField, SortDesc);
-        FocusedCountryId = null;
     }
 
     async Task HeaderClick(string field)

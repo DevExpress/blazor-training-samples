@@ -1,12 +1,10 @@
 ﻿@page "/dataTransformer"
 
-@inject IJSRuntime Js
-
 <div class="card my-3">
     <h5 class="card-header">Data Transformer</h5>
     <div class="card-body">
         <pre>
-new List<Country> {
+new List&lt;Country&gt; {
   new Country {
     CountryName = "UK",
     Cities = new City[] {
@@ -28,7 +26,7 @@ new List<Country> {
     {
         <div class="card-body">
             <table class="table">
-                <thead><tr><th>Country</th><th>City</th><th>Population</th></thead>
+                <thead><tr><th>Country</th><th>City</th><th>Population</th></tr></thead>
                 <tbody>
                     @foreach (var row in TransformResult)
                     {
@@ -47,8 +45,7 @@ new List<Country> {
 @functions {
     List<TransformResult> TransformResult { get; set; }
 
-    async Task TransformData()
+    void TransformData()
     {
-        TransformResult = await Js.InvokeAsync<List<TransformResult>>("transformData", DemoData.Data);
     }
 }

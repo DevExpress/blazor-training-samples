@@ -13,7 +13,7 @@
     void RequestJsCallback()
     {
         Console.WriteLine("Requesting JavaScript callback");
-        Js.InvokeAsync<bool>("requestJsCallback", 
+        Js.InvokeAsync<bool>("requestJsCallback",
           new DotNetObjectRef(this));
     }
 
