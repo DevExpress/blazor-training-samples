@@ -1,0 +1,37 @@
+﻿<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <span class="input-group-text">New Todo Item</span>
+    </div>
+    <input type="text" class="form-control"
+           placeholder="Enter your text here"
+           bind-value-oninput="@Text" onkeypress="@KeyPress" />
+    <div class="input-group-append">
+        <button class="btn btn-secondary @buttonDisabled" onclick="@NewItem">Add (Enter)</button>
+    </div>
+</div>
+
+@functions {
+    string Text { get; set; }
+
+    string buttonDisabled => Text != null && Text.Length > 0 ? null : "disabled";
+
+    [Parameter]
+    private Action<string> OnNewItem { get; set; }
+
+    void NewItem()
+    {
+        if (OnNewItem != null)
+        {
+            OnNewItem(Text);
+            Text = "";
+        }
+    }
+
+    void KeyPress(UIKeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            NewItem();
+        }
+    }
+}

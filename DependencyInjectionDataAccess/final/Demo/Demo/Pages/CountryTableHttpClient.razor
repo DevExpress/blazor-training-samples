@@ -1,0 +1,47 @@
+﻿@page "/httpClient"
+
+@inject HttpClient HttpClient
+
+@if (Countries != null)
+{
+    <h4>Showing top 10 countries sorted by "population", descending</h4>
+
+    <table class="table m-4 country-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Country</th>
+                <th>Area in KM<sup>2</sup></th>
+                <th>Population</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var country in Countries)
+            {
+                <tr>
+                    <td>@country._id</td>
+                    <td>@country.name</td>
+                    <td>@country.areaKM2</td>
+                    <td>@country.population</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Loading country data...</p>
+}
+
+@functions {
+    Country[] Countries { get; set; }
+
+    protected override async Task OnInitAsync()
+    {
+        var url = "https://outlier.oliversturm.com:8081/countries?sort[0][selector]=population&sort[0][desc]=true&take=10";
+        var data = await HttpClient.GetJsonAsync<Data>(url);
+        Countries = data.data;
+    }
+}

@@ -1,0 +1,14 @@
+﻿<tr class="todo @rowClass">
+    <td class="text-center"><input type="checkbox" bind="@Done" /></td>
+    <td class="@textClass">@Text</td>
+</tr>
+
+@functions {
+    [Parameter]
+    string Text { get; set; }
+    [Parameter]
+    bool Done { get; set; }
+
+    string textClass => Done ? "done text-muted" : null;
+    string rowClass => Done ? "table-secondary" : null;
+}

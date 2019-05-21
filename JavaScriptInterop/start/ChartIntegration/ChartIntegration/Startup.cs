@@ -1,6 +1,6 @@
+using ChartIntegration.Shared;
 using Microsoft.AspNetCore.Components.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using ChartIntegration.Shared;
 
 namespace ChartIntegration
 {

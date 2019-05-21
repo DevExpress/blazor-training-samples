@@ -11,10 +11,7 @@
 <body>
     <app>Loading...</app>
 
-    <script src="_framework/components.webassembly.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/data-transformer/0.1.12/data-transformer-browser.min.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
 
     <script>
         window.debugOut = (content, useDir = true, prefix = "") => {
@@ -36,13 +33,14 @@
         window.transformData = data => Array.from(dataTransformer.flattenOneToN(data));
 
         setInterval(() => {
-            console.log('Current time from .NET',
+            console.log(
+                'Current time from .NET',
                 DotNet.invokeMethod('Basics', 'GetCurrentTime'));
         }, 3000);
 
         //setInterval(() => {
-        //    DotNet.invokeMethodAsync('Basics', 'GetCurrentTimeAsync')
-        //        .then(time => console.log('Current async time from .NET', time));
+        //    DotNet.invokeMethodAsync('Basics', 'GetCurrentTimeAsync').then(time =>
+        //        console.log('Current async time from .NET', time));
         //}, 3000);
 
         window.requestJsCallback = callbackReceiver => {
@@ -53,5 +51,7 @@
         };
     </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/data-transformer/0.1.12/data-transformer-browser.min.js"></script>
 </body>
 </html>
