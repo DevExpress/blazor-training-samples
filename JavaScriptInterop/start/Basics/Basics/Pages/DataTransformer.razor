@@ -20,7 +20,7 @@ new List&lt;Country&gt; {
   }
 }
             </pre>
-        <button onclick=@TransformData>Transform data</button>
+        <button @onclick="TransformData">Transform data</button>
     </div>
     @if (TransformResult != null)
     {
@@ -42,7 +42,7 @@ new List&lt;Country&gt; {
     }
 </div>
 
-@functions {
+@code {
     List<TransformResult> TransformResult { get; set; }
 
     void TransformData()

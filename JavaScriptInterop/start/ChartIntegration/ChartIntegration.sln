@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.452
+VisualStudioVersion = 16.0.29123.89
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartIntegration", "ChartIntegration\ChartIntegration.csproj", "{84ABB994-A9B0-43B2-9AA5-065CF0969D17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartIntegration", "ChartIntegration\ChartIntegration.csproj", "{327D231F-9524-45FE-8E28-FE20E6E9DF20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{84ABB994-A9B0-43B2-9AA5-065CF0969D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84ABB994-A9B0-43B2-9AA5-065CF0969D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84ABB994-A9B0-43B2-9AA5-065CF0969D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84ABB994-A9B0-43B2-9AA5-065CF0969D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327D231F-9524-45FE-8E28-FE20E6E9DF20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327D231F-9524-45FE-8E28-FE20E6E9DF20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327D231F-9524-45FE-8E28-FE20E6E9DF20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327D231F-9524-45FE-8E28-FE20E6E9DF20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D42DBB49-956D-492E-96D5-C97BC5760EBE}
+		SolutionGuid = {4DAACE27-6B6C-4080-8F7B-58FD6765F2CB}
 	EndGlobalSection
 EndGlobal
