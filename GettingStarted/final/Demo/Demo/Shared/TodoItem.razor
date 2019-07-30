@@ -1,9 +1,9 @@
 ﻿<tr class="todo @rowClass">
-    <td class="text-center"><input type="checkbox" bind="@Done" /></td>
+    <td class="text-center"><input type="checkbox" @bind="Done" /></td>
     <td class="@textClass">@Text</td>
 </tr>
 
-@functions {
+@code {
     [Parameter]
     string Text { get; set; }
     [Parameter]
