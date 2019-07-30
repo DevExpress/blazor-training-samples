@@ -133,13 +133,3 @@ app {
         display: block;
     }
 }
-
-.country-table {
-    width: 90%;
-    margin: 1.5rem auto;
-}
-
-.country-table th {
-    width: 25%;
-    cursor: pointer;
-}
