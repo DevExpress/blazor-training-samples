@@ -5,16 +5,16 @@
 <div class="card my-3">
     <h5 class="card-header">Calling a .NET instance</h5>
     <div class="card-body">
-        <button onclick=@RequestJsCallback>Request JS callback</button>
+        <button @onclick="RequestJsCallback">Request JS callback</button>
     </div>
 </div>
 
-@functions {
+@code {
     void RequestJsCallback()
     {
         Console.WriteLine("Requesting JavaScript callback");
         Js.InvokeAsync<bool>("requestJsCallback",
-          new DotNetObjectRef(this));
+          DotNetObjectRef.Create(this));
     }
 
     [JSInvokable]

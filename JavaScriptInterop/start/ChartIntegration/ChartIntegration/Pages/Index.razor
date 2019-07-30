@@ -4,7 +4,7 @@
 
 @{
     RenderFragment ColumnHeader(string field, string caption) =>
-    @<th onclick=@(async () => await HeaderClick(field))>
+    @<th @onclick=@(async () => await HeaderClick(field))>
         @((MarkupString)caption) <SortIndicator Field=@field SortField=@SortField Desc=@SortDesc />
     </th>;
 }
@@ -42,10 +42,8 @@ else
     <p>Loading country data...</p>
 }
 
-@functions {
+@code {
     Country[] Countries { get; set; }
-    string SortField { get; set; } = "population";
-    bool SortDesc { get; set; } = true;
 
     protected override async Task OnInitAsync()
     {
@@ -56,6 +54,9 @@ else
     {
         Countries = await DataLayer.FetchCountries(SortField, SortDesc);
     }
+
+    string SortField { get; set; } = "population";
+    bool SortDesc { get; set; } = true;
 
     async Task HeaderClick(string field)
     {

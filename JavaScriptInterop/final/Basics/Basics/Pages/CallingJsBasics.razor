@@ -5,16 +5,16 @@
 <div class="card my-3">
     <h5 class="card-header">Debug Output</h5>
     <div class="card-body">
-        <button onclick=@DebugOutString>Output debug string</button>
-        <button onclick=@DebugOutObject>Output debug object</button>
+        <button @onclick="DebugOutString">Output debug string</button>
+        <button @onclick="DebugOutObject">Output debug object</button>
     </div>
 </div>
 
 <div class="card my-3">
     <h5 class="card-header">Don't Panic</h5>
     <div class="card-body">
-        <button onclick=@GetTheAnswer>Get the answer to life, the universe and everything</button>
-        <button onclick=@ClearTheAnswer>Clear</button>
+        <button @onclick="GetTheAnswer">Get the answer to life, the universe and everything</button>
+        <button @onclick="ClearTheAnswer">Clear</button>
     </div>
     @if (TheAnswer != null)
     {
@@ -25,7 +25,7 @@
     }
 </div>
 
-@functions {
+@code {
     async void DebugOutString()
     {
         await Js.InvokeAsync<bool>("debugOut", "Test String", false, "Here's a string");

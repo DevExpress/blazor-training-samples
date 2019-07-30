@@ -5,21 +5,15 @@
             @Header
         </div>
     }
+
     <div class="card-body">
         @if (!string.IsNullOrEmpty(Title))
         {
-            if (TitleTemplate != null)
-            {
-                @TitleTemplate(Title)
-            }
-            else
-            {
-                <h4 class="card-title">@Title</h4>
-            }
+            @TitleTemplate(Title)
         }
-
         <p class="card-text">@Content</p>
     </div>
+
     @if (Footer != null)
     {
         <div class="card-footer">
@@ -28,7 +22,7 @@
     }
 </div>
 
-@functions {
+@code {
     [Parameter]
     string Title { get; set; }
 
@@ -36,11 +30,12 @@
     RenderFragment Content { get; set; }
 
     [Parameter]
-    RenderFragment<string> TitleTemplate { get; set; }
+    RenderFragment<string> TitleTemplate { get; set; } =
+      (title) =>@<h4 class="card-title">@title</h4>;
 
-    [Parameter]
-    RenderFragment Header { get; set; }
+[Parameter]
+RenderFragment Header { get; set; }
 
-    [Parameter]
-    RenderFragment Footer { get; set; }
+[Parameter]
+RenderFragment Footer { get; set; }
 }

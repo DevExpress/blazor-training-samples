@@ -1,5 +1,4 @@
 ﻿@page "/httpClient"
-
 @inject HttpClient HttpClient
 
 @if (Countries != null)
@@ -35,7 +34,7 @@ else
     <p>Loading country data...</p>
 }
 
-@functions {
+@code {
     Country[] Countries { get; set; }
 
     protected override async Task OnInitAsync()

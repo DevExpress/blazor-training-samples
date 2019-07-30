@@ -1,8 +1,8 @@
 ﻿@inject IJSRuntime Js
 
-<div ref="chart" />
+<div @ref="chart" />
 
-@functions {
+@code {
     [Parameter]
     IList<Country> Data { get; set; }
 
@@ -10,7 +10,7 @@
 
     protected override async Task OnAfterRenderAsync()
     {
-        await Js.InvokeAsync<bool>("initCountryChart", chart, Data, new DotNetObjectRef(this));
+        await Js.InvokeAsync<bool>("initCountryChart", chart, Data, DotNetObjectRef.Create(this));
     }
 
     [Parameter]

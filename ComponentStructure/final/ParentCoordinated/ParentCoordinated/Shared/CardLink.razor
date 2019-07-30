@@ -1,7 +1,7 @@
 ﻿@inherits ChildElement<ICardBody>
 @using Microsoft.AspNetCore.Components.RenderTree;
 
-@functions {
+@code {
     protected override void Register(ICardBody parent)
     {
         parent.AddLink(this);

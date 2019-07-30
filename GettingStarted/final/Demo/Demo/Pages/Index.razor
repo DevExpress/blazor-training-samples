@@ -4,9 +4,9 @@
 
 <TodoList Todos="@todos" />
 
-@functions {
+@code  {
     IList<Todo> todos = new List<Todo>{
-  new Todo { Text = "Watch videos about Blazor" },
-  new Todo { Text = "Create own Blazor app" }
-};
+        new Todo { Text = "Watch videos about Blazor" },
+        new Todo { Text = "Create own Blazor app" }
+    };
 }
