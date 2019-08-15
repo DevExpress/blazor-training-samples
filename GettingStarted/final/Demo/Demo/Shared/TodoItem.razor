@@ -5,9 +5,9 @@
 
 @code {
     [Parameter]
-    string Text { get; set; }
+    public string Text { get; set; }
     [Parameter]
-    bool Done { get; set; }
+    public bool Done { get; set; }
 
     string textClass => Done ? "done text-muted" : null;
     string rowClass => Done ? "table-secondary" : null;
