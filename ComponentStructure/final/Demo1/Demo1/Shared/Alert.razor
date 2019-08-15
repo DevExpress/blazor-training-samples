@@ -24,13 +24,13 @@
     }
 
     [Parameter]
-    AlertType Type { get; set; } = AlertType.Primary;
+    public AlertType Type { get; set; } = AlertType.Primary;
 
     [Parameter]
-    RenderFragment ChildContent { get; set; }
-
-    [Parameter]
-    string Title { get; set; }
+    public RenderFragment ChildContent { get; set; }
 
     string AlertClass => $"alert-{Type.ToString().ToLower()}";
+
+    [Parameter]
+    public string Title { get; set; }
 }
