@@ -18,7 +18,7 @@
     EditContext EditContext { get; set; }
 
     [Parameter]
-    System.Linq.Expressions.Expression<Func<T>> For { get; set; }
+    public System.Linq.Expressions.Expression<Func<T>> For { get; set; }
 
     FieldIdentifier fieldIdentifier;
     protected override void OnParametersSet()

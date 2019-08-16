@@ -8,7 +8,6 @@
 <EditForm Model="@Trophy" OnValidSubmit="@ValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
-
     <div class="form-group">
         <label for="name">Name:</label>
         <InputText Class="form-control" id="name" @bind-Value="Trophy.Name" />
@@ -36,11 +35,11 @@
 
 @code {
     [Parameter]
-    int Id { get; set; }
+    public int Id { get; set; }
 
     Trophy Trophy { get; set; }
 
-    protected override void OnInit()
+    protected override void OnInitialized()
     {
         Trophy = DataLayer.TrophyForEditing(Id);
     }
