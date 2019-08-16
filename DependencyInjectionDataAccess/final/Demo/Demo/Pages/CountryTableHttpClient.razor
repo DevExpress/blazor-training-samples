@@ -1,4 +1,5 @@
 ﻿@page "/httpClient"
+
 @inject HttpClient HttpClient
 
 @if (Countries != null)
@@ -37,7 +38,7 @@ else
 @code {
     Country[] Countries { get; set; }
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         var url = "https://outlier.oliversturm.com:8081/countries?sort[0][selector]=population&sort[0][desc]=true&take=10";
         var data = await HttpClient.GetJsonAsync<Data>(url);

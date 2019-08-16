@@ -5,7 +5,7 @@
 @{
     RenderFragment ColumnHeader(string field, string caption) =>
     @<th @onclick=@(async () => await HeaderClick(field))>
-        @((MarkupString)caption) <SortIndicator Field=@field SortField=@SortField Desc=@SortDesc />
+        @((MarkupString)caption) <SortIndicator Field="@field" SortField="@SortField" Desc="@SortDesc" />
     </th>;
 }
 
@@ -45,7 +45,7 @@ else
 @code {
     Country[] Countries { get; set; }
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         await LoadData();
     }
