@@ -28,7 +28,7 @@
 
     IList<Trophy> Trophies { get; set; }
 
-    protected override void OnInit()
+    protected override void OnInitialized()
     {
         Trophies = DataLayer.AllTrophies();
     }

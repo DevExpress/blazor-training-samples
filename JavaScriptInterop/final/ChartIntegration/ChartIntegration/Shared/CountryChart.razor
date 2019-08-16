@@ -1,12 +1,12 @@
 ﻿@inject IJSRuntime Js
 
-<div @ref="chart" />
+<div @ref="chart" @ref:suppressField />
 
 @code {
     [Parameter]
-    IList<Country> Data { get; set; }
+    public IList<Country> Data { get; set; }
 
-    ElementRef chart;
+    ElementReference chart;
 
     protected override async Task OnAfterRenderAsync()
     {
@@ -14,7 +14,7 @@
     }
 
     [Parameter]
-    Action<string> OnChartPointClicked { get; set; }
+    public Action<string> OnChartPointClicked { get; set; }
 
     [JSInvokable]
     public void ChartPointClicked(string id)

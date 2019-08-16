@@ -5,11 +5,11 @@
 
 @code {
     [Parameter]
-    string Field { get; set; }
+    public string Field { get; set; }
     [Parameter]
-    string SortField { get; set; }
+    public string SortField { get; set; }
     [Parameter]
-    bool Desc { get; set; }
+    public bool Desc { get; set; }
 
     string ArrowClass => Desc ? "oi-arrow-thick-bottom" : "oi-arrow-thick-top";
 }
