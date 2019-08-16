@@ -49,6 +49,6 @@ new List&lt;Country&gt; {
 
     async Task TransformData()
     {
-        TransformResult = await Js.InvokeAsync<List<TransformResult>>("transformData", DemoData.Data);
+        TransformResult = await Js.InvokeAsync<List<TransformResult>>("transformData", (object)DemoData.Data);
     }
 }
