@@ -54,7 +54,7 @@ else
 @code {
     Country[] Countries { get; set; }
 
-    protected override async Task OnInitAsync()
+    protected override async Task OnInitializedAsync()
     {
         await LoadData();
     }
