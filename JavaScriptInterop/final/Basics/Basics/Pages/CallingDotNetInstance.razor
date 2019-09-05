@@ -1,5 +1,4 @@
 ﻿@page "/callingDotNetInstance"
-
 @inject IJSRuntime Js
 
 <div class="card my-3">
@@ -14,7 +13,7 @@
     {
         Console.WriteLine("Requesting JavaScript callback");
         Js.InvokeAsync<bool>("requestJsCallback",
-          DotNetObjectRef.Create(this));
+          DotNetObjectReference.Create(this));
     }
 
     [JSInvokable]

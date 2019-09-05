@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Basics.Shared
 {
-  public static class DotNetDataForJs
+  public class DotNetDataForJs
   {
+
     [JSInvokable]
     public static DateTime GetCurrentTime()
     {
