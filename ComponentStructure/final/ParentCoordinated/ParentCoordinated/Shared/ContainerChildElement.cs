@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.RenderTree;
+using Microsoft.AspNetCore.Components.Rendering;
 
 namespace ParentCoordinated.Shared
 {
   public abstract class ContainerChildElement<TParent> : ChildElement<TParent>
   {
     [Parameter]
-    RenderFragment ChildContent { get; set; }
+    public RenderFragment ChildContent { get; set; }
 
     protected virtual ElementType ContainerElementType => ElementType.Div;
 

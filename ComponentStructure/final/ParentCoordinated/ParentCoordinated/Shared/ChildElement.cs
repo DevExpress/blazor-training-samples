@@ -9,11 +9,11 @@ namespace ParentCoordinated.Shared
   public abstract class ChildElement<TParent> : ComponentBase
   {
     [CascadingParameter]
-    TParent Parent { get; set; }
+    public TParent Parent { get; set; }
 
-    protected override void OnInit()
+    protected override void OnInitialized()
     {
-      base.OnInit();
+      base.OnInitialized();
       if (Parent != null)
         Register(Parent);
     }
