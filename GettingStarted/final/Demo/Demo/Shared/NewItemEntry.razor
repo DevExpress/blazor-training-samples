@@ -4,7 +4,8 @@
     </div>
     <input type="text" class="form-control"
            placeholder="Enter your text here"
-           @bind-value="Text" @bind-value:event="oninput" @onkeypress="KeyPress" /><div class="input-group-append">
+           @bind-value="Text" @bind-value:event="oninput" @onkeypress="KeyPress" />
+    <div class="input-group-append">
         <button class="btn btn-secondary @buttonDisabled" @onclick="NewItem">Add (Enter)</button>
     </div>
 </div>
@@ -28,7 +29,7 @@
         }
     }
 
-    void KeyPress(UIKeyboardEventArgs e)
+    void KeyPress(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
         {
