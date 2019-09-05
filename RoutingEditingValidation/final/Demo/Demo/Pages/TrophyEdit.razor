@@ -1,13 +1,14 @@
 ﻿@page "/trophies/{Id:int}"
 
 @inject IDataLayer DataLayer
-@inject IUriHelper UriHelper
+@inject NavigationManager NavigationManager
 
 <h1>Editing trophy "@Trophy.Name"</h1>
 
 <EditForm Model="@Trophy" OnValidSubmit="@ValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
+
     <div class="form-group">
         <label for="name">Name:</label>
         <InputText Class="form-control" id="name" @bind-Value="Trophy.Name" />
@@ -46,7 +47,7 @@
 
     void BackToList()
     {
-        UriHelper.NavigateTo("/trophies");
+        NavigationManager.NavigateTo("/trophies");
     }
 
     void Cancel()

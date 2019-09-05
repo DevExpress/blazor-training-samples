@@ -11,9 +11,9 @@ namespace ParentCoordinated.Shared
     [CascadingParameter]
     TParent Parent { get; set; }
 
-    protected override void OnInit()
+    protected override void OnInitialized()
     {
-      base.OnInit();
+      base.OnInitialized();
       if (Parent != null)
         Register(Parent);
     }
