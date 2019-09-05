@@ -1,6 +1,6 @@
 ﻿@inject IJSRuntime Js
 
-<div @ref="chart" @ref:suppressField />
+<div @ref="chart" />
 
 @code {
     [Parameter]
@@ -8,9 +8,9 @@
 
     ElementReference chart;
 
-    protected override async Task OnAfterRenderAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await Js.InvokeAsync<bool>("initCountryChart", chart, Data, DotNetObjectRef.Create(this));
+        await Js.InvokeAsync<bool>("initCountryChart", chart, Data, DotNetObjectReference.Create(this));
     }
 
     [Parameter]
