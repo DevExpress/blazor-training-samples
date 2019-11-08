@@ -40,7 +40,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        var url = "https://outlier.oliversturm.com:8081/countries?sort[0][selector]=population&sort[0][desc]=true&take=10";
+        var url = "http://outlier.oliversturm.com:8080/countries?sort[0][selector]=population&sort[0][desc]=true&take=10";
         var data = await HttpClient.GetJsonAsync<Data>(url);
         Countries = data.data;
     }
