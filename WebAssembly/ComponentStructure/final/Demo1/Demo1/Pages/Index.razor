@@ -1,0 +1,21 @@
+﻿@page "/"
+
+<Alert Type="Alert.AlertType.Warning" Title="Warning Warning">
+    Something really cool just happened!
+</Alert>
+
+<Card Title="Cards are useful for structure">
+    <Content>
+        They contain content, which is usually text. Other
+        types of elements are also supported though.
+    </Content>
+    <TitleTemplate Context="title">
+        <h1 class="card-title text-danger">@title</h1>
+    </TitleTemplate>
+    <Header>
+        <h3>Info</h3>
+    </Header>
+    <Footer>
+        This is the end of the card
+    </Footer>
+</Card>

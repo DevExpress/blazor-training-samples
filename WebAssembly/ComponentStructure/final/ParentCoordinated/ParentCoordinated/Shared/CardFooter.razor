@@ -1,0 +1,10 @@
+﻿@inherits ContainerChildElement<ICard>
+
+@code {
+    protected override void Register(ICard parent)
+    {
+        parent.SetFooter(this);
+    }
+
+    protected override string ContainerCssClass => "card-footer text-muted";
+}

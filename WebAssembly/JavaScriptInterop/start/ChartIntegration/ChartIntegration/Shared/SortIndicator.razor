@@ -1,0 +1,15 @@
+﻿@if (SortField == Field)
+{
+    <span class="px-3 text-primary oi @ArrowClass"></span>
+}
+
+@code {
+    [Parameter]
+    public string Field { get; set; }
+    [Parameter]
+    public string SortField { get; set; }
+    [Parameter]
+    public bool Desc { get; set; }
+
+    string ArrowClass => Desc ? "oi-arrow-thick-bottom" : "oi-arrow-thick-top";
+}

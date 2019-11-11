@@ -1,0 +1,66 @@
+﻿@page "/"
+@namespace ChartIntegration.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChartIntegration</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.5/css/dx.common.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/19.1.5/css/dx.light.css" />
+
+    <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/19.1.5/js/dx.viz.js"></script>
+</head>
+<body>
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+
+    <script>
+        window.initCountryChart = (chartElement, data, blazorComponent) => {
+            $(chartElement).dxChart({
+                dataSource: data,
+                commonSeriesSettings: {
+                    argumentField: 'name',
+                    type: 'bar'
+                },
+                argumentAxis: {
+                    label: {
+                        displayMode: 'rotate',
+                        rotationAngle: 270
+                    }
+                },
+                valueAxis: [
+                    { name: 'areaAxis', title: 'Area' },
+                    { name: 'populationAxis', title: 'Population', position: 'right' }
+                ],
+                series: [
+                    {
+                        valueField: 'areaKM2',
+                        axis: 'areaAxis',
+                        name: 'Area in KM^2'
+                    },
+                    {
+                        valueField: 'population',
+                        axis: 'populationAxis',
+                        name: 'Population'
+                    }
+                ],
+                onPointClick: ({ target }) => {
+                    blazorComponent.invokeMethodAsync('ChartPointClicked', target.data._id);
+                }
+            });
+        };
+    </script>
+</body>
+</html>

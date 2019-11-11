@@ -1,0 +1,10 @@
+﻿@inherits FlexibleContainerChildElement<ICard>
+
+@code {
+  protected override void Register(ICard parent)
+  {
+      parent.SetHeader(this);
+  }
+
+  protected override string ContainerCssClass => "card-header";
+}

@@ -1,0 +1,38 @@
+﻿@page "/trophies"
+
+@inject IDataLayer DataLayer
+
+<h1>All trophies</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Item</th>
+            <th>Source</th>
+            <th>Cool Factor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Trophies)
+        {
+            <tr>
+                <td><a href=@($"/trophies/{t.Id}") alt="Edit"><span class="oi oi-pencil"></span></a></td>
+                <td>@t.Name</td>
+                <td>@t.Source</td>
+                <td>@t.CoolFactor</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+
+    IList<Trophy> Trophies { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Trophies = DataLayer.AllTrophies();
+    }
+
+}
