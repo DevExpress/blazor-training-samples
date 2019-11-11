@@ -1,0 +1,62 @@
+﻿@page "/"
+@namespace Basics.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/data-transformer/0.1.12/data-transformer-browser.min.js"></script>
+
+    <script>
+        window.debugOut = (content, useDir = true, prefix = "") => {
+            if (useDir) {
+                if (prefix) console.log(prefix);
+                console.dir(content);
+            }
+            else {
+                console.log((prefix ? `${prefix}: ` : '') + JSON.stringify(content));
+            }
+        };
+
+        window.getTheAnswer = () => ({
+            description: 'The answer to life, the universe and everything',
+            value: '42'
+        });
+
+        window.transformData = data => Array.from(dataTransformer.flattenOneToN(data));
+
+        // Server-Side Blazor can't use synchronous calls
+        //setInterval(() => {
+        //    console.log(
+        //        'Current time from .NET',
+        //        DotNet.invokeMethod('Basics', 'GetCurrentTime'));
+        //}, 3000);
+
+        setInterval(() => {
+            DotNet.invokeMethodAsync('Basics', 'GetCurrentTimeAsync').then(time =>
+                console.log('Current async time from .NET', time));
+        }, 3000);
+
+        window.requestJsCallback = callbackReceiver => {
+            setTimeout(() => {
+                callbackReceiver.invokeMethodAsync('Callback');
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
