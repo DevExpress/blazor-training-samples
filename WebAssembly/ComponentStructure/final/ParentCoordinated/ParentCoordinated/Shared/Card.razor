@@ -1,0 +1,54 @@
+﻿@implements ICard
+@implements IHandleChildStateChanges
+
+<CascadingValue Value=this>
+    @ChildContent
+
+    <div class="card">
+        @if (header != null)
+        {
+            @header.RenderContent
+        }
+
+        @foreach (var body in bodies)
+        {
+          @body.RenderContent
+        }
+
+        @if (footer != null)
+        {
+            @footer.RenderContent
+        }
+    </div>
+</CascadingValue>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    List<CardBody> bodies = new List<CardBody>();
+
+    public void AddBody(CardBody body)
+    {
+        bodies.Add(body);
+        StateHasChanged();
+    }
+
+    CardHeader header;
+    public void SetHeader(CardHeader header)
+    {
+        this.header = header;
+        StateHasChanged();
+    }
+
+    CardFooter footer;
+    public void SetFooter(CardFooter footer)
+    {
+        this.footer = footer;
+        StateHasChanged();
+    }
+
+    public void ChildStateChanged() {
+        StateHasChanged();
+    }
+}
