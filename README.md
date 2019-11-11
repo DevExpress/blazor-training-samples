@@ -25,4 +25,4 @@ We will release new versions of the WebAssembly samples if Microsoft introduces 
 The `Server` folder contains a set of sample projects similar to the ones presented in the video course. They target the release version of .NET Core 3.0. Other than structural aspects of the server-side projects, these are the implementation differences:
 
 - Instead of the WebAssembly `HttpClient`, the interface `IHttpClientFactory` is injected for access to web services. JSON deserialization is performed by `System.Text.Json.JsonSerializer`, as described in [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.0).
-- Synchronous `invokeMethod` is not supported in server-side Blazor, so all calls use `invokeMethodAsync`.
+- Synchronous `invokeMethod` is not supported for JS interop in server-side Blazor, so all calls use `invokeMethodAsync`.
