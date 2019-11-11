@@ -1,0 +1,63 @@
+﻿@page "/trophies/{Id:int}"
+
+@inject IDataLayer DataLayer
+@inject NavigationManager NavigationManager
+
+<h1>Editing trophy "@Trophy.Name"</h1>
+
+<EditForm Model="@Trophy" OnValidSubmit="@ValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <InputText Class="form-control" id="name" @bind-Value="Trophy.Name" />
+        <ValidationMessage For="@(() => Trophy.Name)" />
+        <BootstrapInvalidFeedback For="@(() => Trophy.Name)" />
+    </div>
+    <div class="form-group">
+        <label for="source">Source:</label>
+        <InputText Class="form-control" id="source" @bind-Value="Trophy.Source" />
+    </div>
+    <div class="form-group">
+        <label for="coolfactor">Cool Factor:</label>
+
+        <InputSelect Class="form-control" id="coolfactor" @bind-Value="Trophy.CoolFactor">
+            @foreach (var f in Enum.GetValues(typeof(CoolFactor)))
+            {
+                <option value="@f">@f.ToString()</option>
+            }
+        </InputSelect>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    Trophy Trophy { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Trophy = DataLayer.TrophyForEditing(Id);
+    }
+
+    void BackToList()
+    {
+        NavigationManager.NavigateTo("/trophies");
+    }
+
+    void Cancel()
+    {
+        BackToList();
+    }
+
+    void ValidSubmit()
+    {
+        DataLayer.SubmitChanges(Trophy);
+        BackToList();
+    }
+}
