@@ -15,8 +15,8 @@ These are the dependency versions for the WebAssembly samples:
 
 We have tested all WebAssembly samples with .NET Core 3.1 previews released later than the published video course. They work correctly and without code changes, using the latest upgraded versions from NuGet. The last version tested is this:
 
-- Microsoft .NET Core SDK 3.1.100 - preview2 (x64) `3.1.100.014569` (as shown in the Windows _Apps & features_ list)
-  - Blazor assemblies show version `3.1.0-preview2.19528.8`
+- Microsoft .NET Core SDK 3.1.100 - preview3 (x64) `3.1.100.014645` (as shown in the Windows _Apps & features_ list)
+  - Blazor assemblies show version `3.1.0-preview3.19555.2`
 
 We will release new versions of the WebAssembly samples if Microsoft introduces breaking changes, or when Blazor WebAssembly is released with .NET Core 3.1.
 
