@@ -8,21 +8,13 @@ This repository contains the source code of the samples shown in the video cours
 
 These are the dependency versions for the WebAssembly samples:
 
-- Microsoft .NET Core SDK 3.0.100 - preview9 (x64) `3.0.100.14004` (as shown in the Windows _Apps & features_ list)
-  - Blazor assemblies show version `3.0.0-preview9.19424.4`
+- Microsoft .NET Core SDK 3.1.100 (x64) `3.1.100.014727` (as shown in the Windows _Apps & features_ list)
 
-### What about later pre-release versions of .NET Core 3.1?
-
-We have tested all WebAssembly samples with .NET Core 3.1 previews released later than the published video course. They work correctly and without code changes, using the latest upgraded versions from NuGet. The last version tested is this:
-
-- Microsoft .NET Core SDK 3.1.100 - preview3 (x64) `3.1.100.014645` (as shown in the Windows _Apps & features_ list)
-  - Blazor assemblies show version `3.1.0-preview3.19555.2`
-
-We will release new versions of the WebAssembly samples if Microsoft introduces breaking changes, or when Blazor WebAssembly is released with .NET Core 3.1.
+  - Blazor assemblies show version `3.1.0-preview4.19579.2`
 
 ## Server-Side Blazor
 
-The `Server` folder contains a set of sample projects similar to the ones presented in the video course. They target the release version of .NET Core 3.0. Other than structural aspects of the server-side projects, these are the implementation differences:
+The `Server` folder contains a set of sample projects similar to the ones presented in the video course. They target the release version of .NET Core 3.1. Other than structural aspects of the server-side projects, these are the implementation differences:
 
 - Instead of the WebAssembly `HttpClient`, the interface `IHttpClientFactory` is injected for access to web services. JSON deserialization is performed by `System.Text.Json.JsonSerializer`, as described in [Microsoft documentation](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.0).
 - Synchronous `invokeMethod` is not supported for JS interop in server-side Blazor, so all calls use `invokeMethodAsync`.
