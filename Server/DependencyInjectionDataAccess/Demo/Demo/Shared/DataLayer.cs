@@ -13,7 +13,7 @@ namespace Demo.Shared {
     private readonly IHttpClientFactory httpClientFactory;
 
     public async Task<Country[]> FetchCountries(string sortField, bool sortDesc) {
-      string url = $"http://outlier.oliversturm.com:8080/countries?sort[0][selector]={sortField}&sort[0][desc]={sortDesc}&take=10";
+      string url = $"https://outlier.oliversturm.com/countries?sort[0][selector]={sortField}&sort[0][desc]={sortDesc}&take=10";
       var client = httpClientFactory.CreateClient();
       var response = await client.GetAsync(url);
       using (var responseStream = await response.Content.ReadAsStreamAsync()) {
